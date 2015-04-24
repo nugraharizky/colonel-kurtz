@@ -44,6 +44,11 @@ export default React.createClass({
     ) : null
   },
 
+  _focusFirstButton() {
+    let btn = this.getDOMNode().querySelector('button')
+    if (btn) btn.focus()
+  },
+
   _onToggle() {
     let types = this.getTypes()
 
@@ -54,6 +59,6 @@ export default React.createClass({
       app.push(Actions.create, types[0].id, position, parent)
     }
 
-    this.setState({ open: true })
+    this.setState({ open: true }, this._focusFirstButton)
   }
 })
